@@ -1,0 +1,6 @@
+# Sources and data stay LF (the mod embeds data/*.tsv with include_str).
+* text=auto eol=lf
+# The shipped INI is CRLF on purpose (a test checks it byte for byte).
+*.ini -text
+*.zip binary
+*.dll binary

@@ -1,0 +1,33 @@
+[package]
+name = "npc-spawner"
+version = "1.0.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+publish = false
+
+# NPC Spawner: spawn any NPC or enemy to test settings. Hotkeys, a
+# talk-list dialog, NpcSpawner.ini and an ERNativeUI tab (phase 2).
+[dependencies]
+eldenring = { path = "../vendor/fromsoftware-rs/crates/eldenring" }
+fromsoftware-shared = { path = "../vendor/fromsoftware-rs/crates/shared" }
+pelite = "0.10"
+
+[dependencies.windows]
+version = "0.61"
+features = [
+    "Win32_Foundation",
+    "Win32_System_Diagnostics_Debug",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Memory",
+    "Win32_System_Threading",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_WindowsAndMessaging",
+]
+
+[lib]
+name = "npc_spawner"
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+debug = 2
+strip = "none"

@@ -1,0 +1,21 @@
+# Builds (cargo builds go to %LOCALAPPDATA%\NPCTestArena-build, but just in case)
+target/
+**/bin/
+**/obj/
+*.pdb
+*.dll
+# Release archives (made by package.py)
+release/
+# Logs, dumps and research output of the mod
+*.log
+dumps/
+NpcSpawner-catalog.tsv
+NpcSpawner-npcnames.tsv
+# Python
+__pycache__/
+*.pyc
+# Backups
+*.bak
+*.bak-*
+# Nexus screenshots (large; kept locally)
+nexus/screenshots/
