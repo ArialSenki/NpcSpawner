@@ -1,8 +1,10 @@
-# NPC Spawner 1.0.0
+# NPC Spawner 1.0.0-beta
+
+> **Beta.** It works, but it is still being finished: expect rough edges. If something goes wrong, a report with `NpcSpawner.log` helps.
 
 Spawn any enemy, boss or NPC of Elden Ring wherever you are, to test builds, settings and mods.
 
-Made and tested on **Elden Ring 1.17.2 (eldenring.exe 2.7.2.0), worldwide, PC**. Other versions are untested.
+Works on **Elden Ring 1.17, 1.17.1 and 1.17.2, worldwide and Japanese, PC** (eldenring.exe 2.7.0.0, 2.7.1.0, 2.7.1.1, 2.7.2.0 and 2.7.2.1). Tested in game on 1.17.2 worldwide; on the others every piece of the game it uses was found in their executables, but they have not been tested in game.
 **Offline only**, with Easy Anti-Cheat disabled. It uses the game's own debug character creator.
 
 ## What it does

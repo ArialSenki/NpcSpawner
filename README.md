@@ -3,7 +3,8 @@
 An Elden Ring mod that spawns any enemy, boss or NPC wherever you are, to test builds, settings and mods. Offline only.
 
 - **Players:** see [mod/README.md](mod/README.md) (English) or [mod/README.es.md](mod/README.es.md) (Spanish), the same files that ship in the release archive. Releases are on Nexus Mods.
-- **Game version:** Elden Ring 1.17.2 (eldenring.exe 2.7.2.0), PC.
+- **Status:** beta.
+- **Game versions:** Elden Ring 1.17, 1.17.1 and 1.17.2, worldwide and Japanese (eldenring.exe 2.7.0.0, 2.7.1.0, 2.7.1.1, 2.7.2.0, 2.7.2.1), PC. Tested in game on 2.7.2.0.
 
 It spawns characters through the game's own debug character creator. Its menus: a talk menu, like a merchant's, on F11, and an entry in the System menu with [NativeTweaks](https://www.nexusmods.com/eldenring/mods/11339). With NativeTweaks r157 or later, the talk menu is a row of NativeTweaks' shared F11 menu instead.
 
@@ -14,7 +15,7 @@ Needs Windows, Python 3 and Rust (stable, MSVC toolchain, target `x86_64-pc-wind
 ```
 python -I build.py            # the release DLL
 python -I build.py test       # the unit tests
-python -I package.py          # release\NpcSpawner-<version>-ER-1.17.2.zip
+python -I package.py          # release\NpcSpawner-<version>-ER-1.17-1.17.1-1.17.2.zip
 ```
 
 `build.py` runs `cargo build --release` in `mod/` and writes source paths without the folders of the machine that built it. `package.py` refuses a DLL that still holds them. The build goes to `%LOCALAPPDATA%\NPCTestArena-build`, or to `NPCSPAWNER_TARGET_DIR` if that variable is set. Extra arguments go to cargo, for example `python -I build.py build --offline`.

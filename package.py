@@ -1,4 +1,4 @@
-"""Build release\\NpcSpawner-<version>-ER-1.17.2.zip.
+"""Build release\\NpcSpawner-<version>-ER-1.17-1.17.1-1.17.2.zip.
 
 Usage: python -I package.py [target_dir]
 Layout (as NativeTweaks): DLLs/NpcSpawner.dll, DLLs/NpcSpawner.ini,
@@ -32,7 +32,7 @@ files = [
 ]
 out_dir = os.path.join(ROOT, "release")
 os.makedirs(out_dir, exist_ok=True)
-out = os.path.join(out_dir, f"NpcSpawner-{version}-ER-1.17.2.zip")
+out = os.path.join(out_dir, f"NpcSpawner-{version}-ER-1.17-1.17.1-1.17.2.zip")
 with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
     for name, src in files:
         z.write(src, name)

@@ -1,8 +1,10 @@
-# NPC Spawner 1.0.0
+# NPC Spawner 1.0.0-beta
+
+> **Beta.** Funciona, pero todavía se está terminando: puede tener detalles por pulir. Si algo falla, ayuda un informe con `NpcSpawner.log`.
 
 Invoca a cualquier enemigo, jefe o NPC de Elden Ring donde estés, para probar builds, ajustes y mods.
 
-Hecho y probado en **Elden Ring 1.17.2 (eldenring.exe 2.7.2.0), versión mundial, PC**. Las demás versiones no están probadas.
+Funciona en **Elden Ring 1.17, 1.17.1 y 1.17.2, versión mundial y japonesa, PC** (eldenring.exe 2.7.0.0, 2.7.1.0, 2.7.1.1, 2.7.2.0 y 2.7.2.1). Probado en el juego en la 1.17.2 mundial; en las demás se han encontrado en sus ejecutables todas las partes del juego que usa, pero no se han probado en el juego.
 **Solo sin conexión**, con Easy Anti-Cheat desactivado. Usa el creador de personajes de depuración del propio juego.
 
 ## Qué hace

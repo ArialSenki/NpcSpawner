@@ -1,6 +1,6 @@
 //! Our own texts in the game's talk menus. The game reads every message
 //! through MsgRepositoryImp's lookup (WW 2.7.2.0 0x142671370, found by bytes
-//! in all five supported versions):
+//! in all five supported versions: 2.7.0.0, 2.7.1.0, 2.7.1.1, 2.7.2.0, 2.7.2.1):
 //!     lookup(repo, bnd, category, id): bnd < [repo+10h] && category < [repo+14h]
 //!         -> file = [[repo+8] + bnd*8][category]; jmp fmg_lookup(file, id)
 //! Its first 12 bytes become `mov rax, hook; jmp rax`; the hook answers our
@@ -225,17 +225,25 @@ pub fn install() -> bool {
         "3B 51 10 73 29 44 3B 41 14 73 23 48 8B 41 08 8B D2 48 8B 0C D0 48 85 C9 74 14 41 8B C0 48 8B 0C C1 48 85 C9 74 08 41 8B D1 E9",
     );
     let Some(at) = crate::game::find_pattern_in_text(start, text.VirtualSize as usize, &pattern) else {
-        // WW 2.7.2.0 / JP 2.7.2.1 keep it at RVA 0x2671370: show what is there.
-        let known = image + 0x2671370;
-        let bytes = if crate::game::readable(known, 16) {
-            let b = unsafe { std::slice::from_raw_parts(known as *const u8, 16) };
-            b.iter().map(|x| format!("{x:02X}")).collect::<Vec<_>>().join(" ")
-        } else {
-            "unreadable".to_string()
-        };
+        // Where the supported versions keep it (checked on their executables):
+        // 2.7.2.0 / 2.7.2.1, 2.7.1.0 / 2.7.1.1, 2.7.0.0. Show what is there.
+        let bytes = [0x2671370usize, 0x266fc40, 0x266fbd0]
+            .iter()
+            .map(|rva| {
+                let at = image + rva;
+                let b = if crate::game::readable(at, 16) {
+                    let b = unsafe { std::slice::from_raw_parts(at as *const u8, 16) };
+                    b.iter().map(|x| format!("{x:02X}")).collect::<Vec<_>>().join(" ")
+                } else {
+                    "unreadable".to_string()
+                };
+                format!("{rva:#x}: {b}")
+            })
+            .collect::<Vec<_>>()
+            .join("; ");
         if attempt == 1 || attempt == MAX_TRIES {
             log(format!(
-                "texts: message lookup not found (bytes at the 1.17.2 address: {bytes}); {}",
+                "texts: message lookup not found (bytes at the known addresses: {bytes}); {}",
                 if attempt == MAX_TRIES {
                     "giving up: game names come from the built-in list and F11 shows only Leave"
                 } else {
